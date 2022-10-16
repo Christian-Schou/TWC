@@ -1,11 +1,21 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using System;
+using In_Memory_Caching.Data;
+using In_Memory_Caching.Services;
+using Microsoft.EntityFrameworkCore;
 
-// Add services to the container.
+var builder = WebApplication.CreateBuilder(args);
 
+// Services
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Database
+builder.Services.AddDbContext<ApplicationDbContext>
+    (o => o.UseInMemoryDatabase("VehicleDb"));
+
+// Vehicles
+builder.Services.AddScoped<IVehicleService, VehicleService>();
 
 var app = builder.Build();
 
