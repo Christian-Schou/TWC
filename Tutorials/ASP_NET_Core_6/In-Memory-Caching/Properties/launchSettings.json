@@ -12,8 +12,7 @@
     "In_Memory_Caching": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7219;http://localhost:5084",
+      "applicationUrl": "http://localhost:11639",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
