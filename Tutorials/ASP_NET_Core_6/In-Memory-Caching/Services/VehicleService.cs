@@ -7,7 +7,7 @@ namespace In_Memory_Caching.Services
 {
     public interface IVehicleService
     {
-        Task<List<Vehicle>> GetAllAsync();
+        Task<List<Vehicle>> GetAllAsync(CancellationToken ct);
     }
 
     public class VehicleService : IVehicleService
@@ -19,10 +19,10 @@ namespace In_Memory_Caching.Services
             _dbContext = dbContext;
         }
 
-        public async Task<List<Vehicle>> GetAllAsync()
+        public async Task<List<Vehicle>> GetAllAsync(CancellationToken ct)
         {
             var vehicles = await _dbContext.Vehicles
-                .ToListAsync();
+                .ToListAsync(ct);
 
             return vehicles;
         }

@@ -21,7 +21,9 @@ namespace In_Memory_Caching.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            List<Vehicle> vehicles = await _vehicleService.GetAllAsync();
+            CancellationToken ct = new CancellationToken();
+
+            List<Vehicle> vehicles = await _vehicleService.GetAllAsync(ct);
 
             return Ok(vehicles);
         }

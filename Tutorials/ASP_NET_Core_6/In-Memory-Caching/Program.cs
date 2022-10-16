@@ -16,6 +16,10 @@ builder.Services.AddDbContext<ApplicationDbContext>
 
 // Vehicles
 builder.Services.AddScoped<IVehicleService, VehicleService>();
+builder.Services.Decorate<IVehicleService, CachedVehicleService>();
+
+// In-Memory Caching
+builder.Services.AddMemoryCache();
 
 var app = builder.Build();
 
